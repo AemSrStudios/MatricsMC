@@ -1,0 +1,1364 @@
+﻿<Window x:Class="MatricsMC.MainWindow"
+     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+     Title="MatricsMC"
+     Width="1200"
+     Height="760"
+     MinWidth="1000"
+     MinHeight="650"
+     WindowStartupLocation="CenterScreen"
+     Background="#0D0F12"
+     Foreground="White"
+     FontFamily="Segoe UI">
+
+
+<Window.Resources>
+
+    <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+
+    <!-- ========================================================= -->
+    <!-- NAV BUTTON -->
+    <!-- ========================================================= -->
+
+    <Style x:Key="NavButtonStyle"
+           TargetType="Button">
+
+        <Setter Property="Background"
+                Value="Transparent"/>
+
+        <Setter Property="Foreground"
+                Value="#969BA4"/>
+
+        <Setter Property="BorderThickness"
+                Value="0"/>
+
+        <Setter Property="FontSize"
+                Value="14"/>
+
+        <Setter Property="HorizontalContentAlignment"
+                Value="Left"/>
+
+        <Setter Property="Padding"
+                Value="14,11"/>
+
+        <Setter Property="Margin"
+                Value="0,2"/>
+
+        <Setter Property="Cursor"
+                Value="Hand"/>
+
+        <Setter Property="Template">
+
+            <Setter.Value>
+
+                <ControlTemplate TargetType="Button">
+
+                    <Border Background="{TemplateBinding Background}"
+                            CornerRadius="9"
+                            Padding="{TemplateBinding Padding}">
+
+                        <ContentPresenter
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="Center"/>
+
+                    </Border>
+
+                </ControlTemplate>
+
+            </Setter.Value>
+
+        </Setter>
+
+        <Style.Triggers>
+
+            <Trigger Property="IsMouseOver"
+                     Value="True">
+
+                <Setter Property="Background"
+                        Value="#191C21"/>
+
+                <Setter Property="Foreground"
+                        Value="White"/>
+
+            </Trigger>
+
+            <Trigger Property="IsPressed"
+                     Value="True">
+
+                <Setter Property="Background"
+                        Value="#20242A"/>
+
+            </Trigger>
+
+        </Style.Triggers>
+
+    </Style>
+
+
+    <!-- ========================================================= -->
+    <!-- PRIMARY BUTTON -->
+    <!-- ========================================================= -->
+
+    <Style x:Key="PrimaryButtonStyle"
+           TargetType="Button">
+
+        <Setter Property="Background"
+                Value="#57D66B"/>
+
+        <Setter Property="Foreground"
+                Value="#08100A"/>
+
+        <Setter Property="BorderThickness"
+                Value="0"/>
+
+        <Setter Property="FontSize"
+                Value="14"/>
+
+        <Setter Property="FontWeight"
+                Value="SemiBold"/>
+
+        <Setter Property="Padding"
+                Value="24,13"/>
+
+        <Setter Property="Cursor"
+                Value="Hand"/>
+
+        <Setter Property="Template">
+
+            <Setter.Value>
+
+                <ControlTemplate TargetType="Button">
+
+                    <Border Background="{TemplateBinding Background}"
+                            CornerRadius="10">
+
+                        <ContentPresenter
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
+
+                    </Border>
+
+                </ControlTemplate>
+
+            </Setter.Value>
+
+        </Setter>
+
+        <Style.Triggers>
+
+            <Trigger Property="IsMouseOver"
+                     Value="True">
+
+                <Setter Property="Background"
+                        Value="#70E981"/>
+
+            </Trigger>
+
+            <Trigger Property="IsPressed"
+                     Value="True">
+
+                <Setter Property="Background"
+                        Value="#46BD59"/>
+
+            </Trigger>
+
+        </Style.Triggers>
+
+    </Style>
+
+
+    <!-- ========================================================= -->
+    <!-- SECONDARY BUTTON -->
+    <!-- ========================================================= -->
+
+    <Style x:Key="SecondaryButtonStyle"
+           TargetType="Button">
+
+        <Setter Property="Background"
+                Value="#181B20"/>
+
+        <Setter Property="Foreground"
+                Value="#E6E8EB"/>
+
+        <Setter Property="BorderBrush"
+                Value="#292E35"/>
+
+        <Setter Property="BorderThickness"
+                Value="1"/>
+
+        <Setter Property="FontSize"
+                Value="13"/>
+
+        <Setter Property="FontWeight"
+                Value="SemiBold"/>
+
+        <Setter Property="Padding"
+                Value="18,10"/>
+
+        <Setter Property="Cursor"
+                Value="Hand"/>
+
+        <Setter Property="Template">
+
+            <Setter.Value>
+
+                <ControlTemplate TargetType="Button">
+
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="9">
+
+                        <ContentPresenter
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
+
+                    </Border>
+
+                </ControlTemplate>
+
+            </Setter.Value>
+
+        </Setter>
+
+        <Style.Triggers>
+
+            <Trigger Property="IsMouseOver"
+                     Value="True">
+
+                <Setter Property="Background"
+                        Value="#20242A"/>
+
+                <Setter Property="BorderBrush"
+                        Value="#363C45"/>
+
+            </Trigger>
+
+            <Trigger Property="IsPressed"
+                     Value="True">
+
+                <Setter Property="Background"
+                        Value="#252A31"/>
+
+            </Trigger>
+
+        </Style.Triggers>
+
+    </Style>
+
+
+    <!-- ========================================================= -->
+    <!-- QUICK ACTION -->
+    <!-- ========================================================= -->
+
+    <Style x:Key="QuickActionStyle"
+           TargetType="Button">
+
+        <Setter Property="Background"
+                Value="#15181D"/>
+
+        <Setter Property="Foreground"
+                Value="White"/>
+
+        <Setter Property="BorderBrush"
+                Value="#252A31"/>
+
+        <Setter Property="BorderThickness"
+                Value="1"/>
+
+        <Setter Property="Padding"
+                Value="18"/>
+
+        <Setter Property="Cursor"
+                Value="Hand"/>
+
+        <Setter Property="Template">
+
+            <Setter.Value>
+
+                <ControlTemplate TargetType="Button">
+
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="12">
+
+                        <ContentPresenter/>
+
+                    </Border>
+
+                </ControlTemplate>
+
+            </Setter.Value>
+
+        </Setter>
+
+        <Style.Triggers>
+
+            <Trigger Property="IsMouseOver"
+                     Value="True">
+
+                <Setter Property="Background"
+                        Value="#1A1E23"/>
+
+                <Setter Property="BorderBrush"
+                        Value="#323841"/>
+
+            </Trigger>
+
+            <Trigger Property="IsPressed"
+                     Value="True">
+
+                <Setter Property="Background"
+                        Value="#20252B"/>
+
+            </Trigger>
+
+        </Style.Triggers>
+
+    </Style>
+
+
+    <!-- ========================================================= -->
+    <!-- ACCOUNT LIST -->
+    <!-- ========================================================= -->
+
+    <Style x:Key="AccountListItemStyle"
+           TargetType="ListBoxItem">
+
+        <Setter Property="Background"
+                Value="#15181D"/>
+
+        <Setter Property="Foreground"
+                Value="White"/>
+
+        <Setter Property="Margin"
+                Value="0,0,0,10"/>
+
+        <Setter Property="Padding"
+                Value="0"/>
+
+        <Setter Property="HorizontalContentAlignment"
+                Value="Stretch"/>
+
+        <Setter Property="Cursor"
+                Value="Hand"/>
+
+        <Setter Property="Template">
+
+            <Setter.Value>
+
+                <ControlTemplate TargetType="ListBoxItem">
+
+                    <Border x:Name="AccountBorder"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="#252A31"
+                            BorderThickness="1"
+                            CornerRadius="12"
+                            Padding="18">
+
+                        <ContentPresenter/>
+
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+
+                        <Trigger Property="IsMouseOver"
+                                 Value="True">
+
+                            <Setter TargetName="AccountBorder"
+                                    Property="Background"
+                                    Value="#1A1E23"/>
+
+                            <Setter TargetName="AccountBorder"
+                                    Property="BorderBrush"
+                                    Value="#343A43"/>
+
+                        </Trigger>
+
+                        <Trigger Property="IsSelected"
+                                 Value="True">
+
+                            <Setter TargetName="AccountBorder"
+                                    Property="Background"
+                                    Value="#191F1B"/>
+
+                            <Setter TargetName="AccountBorder"
+                                    Property="BorderBrush"
+                                    Value="#57D66B"/>
+
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+
+            </Setter.Value>
+
+        </Setter>
+
+    </Style>
+
+
+    <!-- ========================================================= -->
+    <!-- DARK COMBOBOX -->
+    <!-- ========================================================= -->
+
+    <Style x:Key="DarkComboBoxStyle"
+           TargetType="ComboBox">
+
+        <Setter Property="Background"
+                Value="#15181D"/>
+
+        <Setter Property="Foreground"
+                Value="White"/>
+
+        <Setter Property="BorderBrush"
+                Value="#292E35"/>
+
+        <Setter Property="BorderThickness"
+                Value="1"/>
+
+        <Setter Property="Padding"
+                Value="12,9"/>
+
+        <Setter Property="FontSize"
+                Value="13"/>
+
+        <Setter Property="MaxDropDownHeight"
+                Value="300"/>
+
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility"
+                Value="Auto"/>
+
+        <Setter Property="Template">
+
+            <Setter.Value>
+
+                <ControlTemplate TargetType="ComboBox">
+
+                    <Grid>
+
+                        <ToggleButton
+                            x:Name="ToggleButton"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Foreground="{TemplateBinding Foreground}"
+                            IsChecked="{Binding IsDropDownOpen,
+                                RelativeSource={RelativeSource TemplatedParent}}"
+                            Focusable="False"
+                            ClickMode="Press">
+
+                            <ToggleButton.Template>
+
+                                <ControlTemplate TargetType="ToggleButton">
+
+                                    <Border
+                                        Background="{TemplateBinding Background}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        CornerRadius="9"
+                                        Padding="12,0">
+
+                                        <Grid>
+
+                                            <ContentPresenter
+                                                HorizontalAlignment="Left"
+                                                VerticalAlignment="Center"
+                                                Margin="0,0,35,0"/>
+
+                                            <TextBlock
+                                                Text="⌄"
+                                                HorizontalAlignment="Right"
+                                                VerticalAlignment="Center"
+                                                FontSize="16"
+                                                Foreground="#777C85"/>
+
+                                        </Grid>
+
+                                    </Border>
+
+                                </ControlTemplate>
+
+                            </ToggleButton.Template>
+
+                        </ToggleButton>
+
+                        <ContentPresenter
+                            Margin="12,0,40,0"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Left"
+                            Content="{TemplateBinding SelectionBoxItem}"
+                            ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                            IsHitTestVisible="False"/>
+
+                        <Popup
+                            x:Name="PART_Popup"
+                            AllowsTransparency="True"
+                            Placement="Bottom"
+                            PlacementTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                            IsOpen="{TemplateBinding IsDropDownOpen}"
+                            PopupAnimation="Fade">
+
+                            <Border
+                                Background="#15181D"
+                                BorderBrush="#292E35"
+                                BorderThickness="1"
+                                CornerRadius="10"
+                                Margin="0,6,0,0"
+                                Width="{Binding ActualWidth,
+                                    RelativeSource={RelativeSource TemplatedParent}}">
+
+                                <ScrollViewer
+                                    MaxHeight="300"
+                                    VerticalScrollBarVisibility="Auto"
+                                    HorizontalScrollBarVisibility="Disabled">
+
+                                    <ItemsPresenter/>
+
+                                </ScrollViewer>
+
+                            </Border>
+
+                        </Popup>
+
+                    </Grid>
+
+                </ControlTemplate>
+
+            </Setter.Value>
+
+        </Setter>
+
+    </Style>
+
+
+    <!-- ========================================================= -->
+    <!-- COMBOBOX ITEMS -->
+    <!-- ========================================================= -->
+
+    <Style TargetType="ComboBoxItem">
+
+        <Setter Property="Foreground"
+                Value="#E7E9EC"/>
+
+        <Setter Property="Background"
+                Value="Transparent"/>
+
+        <Setter Property="Padding"
+                Value="12,9"/>
+
+        <Setter Property="HorizontalContentAlignment"
+                Value="Stretch"/>
+
+        <Setter Property="Template">
+
+            <Setter.Value>
+
+                <ControlTemplate TargetType="ComboBoxItem">
+
+                    <Border
+                        x:Name="ItemBorder"
+                        Background="{TemplateBinding Background}"
+                        CornerRadius="7"
+                        Margin="4,2"
+                        Padding="{TemplateBinding Padding}">
+
+                        <ContentPresenter/>
+
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+
+                        <Trigger Property="IsMouseOver"
+                                 Value="True">
+
+                            <Setter TargetName="ItemBorder"
+                                    Property="Background"
+                                    Value="#20252B"/>
+
+                        </Trigger>
+
+                        <Trigger Property="IsSelected"
+                                 Value="True">
+
+                            <Setter TargetName="ItemBorder"
+                                    Property="Background"
+                                    Value="#1C3221"/>
+
+                            <Setter Property="Foreground"
+                                    Value="#57D66B"/>
+
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+
+            </Setter.Value>
+
+        </Setter>
+
+    </Style>
+
+
+    <!-- ========================================================= -->
+    <!-- TEXTBOX -->
+    <!-- ========================================================= -->
+
+    <Style TargetType="TextBox">
+
+        <Setter Property="Background"
+                Value="Transparent"/>
+
+        <Setter Property="Foreground"
+                Value="#E7E9EC"/>
+
+        <Setter Property="BorderThickness"
+                Value="0"/>
+
+        <Setter Property="FontSize"
+                Value="13"/>
+
+    </Style>
+
+</Window.Resources>
+
+
+<Grid>
+
+    <Grid.ColumnDefinitions>
+
+        <ColumnDefinition Width="225"/>
+
+        <ColumnDefinition Width="*"/>
+
+    </Grid.ColumnDefinitions>
+
+
+    <!-- ========================================================= -->
+    <!-- SIDEBAR -->
+    <!-- ========================================================= -->
+
+    <Border Grid.Column="0"
+            Background="#101216"
+            BorderBrush="#1E2228"
+            BorderThickness="0,0,1,0">
+
+        <Grid Margin="18">
+
+            <Grid.RowDefinitions>
+
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+
+            </Grid.RowDefinitions>
+
+
+            <StackPanel Grid.Row="0"
+                        Margin="6,8,6,32">
+
+                <TextBlock Text="MatricsMC"
+                           FontSize="24"
+                           FontWeight="Bold"/>
+
+                <TextBlock Text="Minecraft Launcher"
+                           FontSize="11"
+                           Foreground="#6E737C"
+                           Margin="1,2,0,0"/>
+
+            </StackPanel>
+
+
+            <StackPanel Grid.Row="1">
+
+                <Button Content="Home"
+                        Style="{StaticResource NavButtonStyle}"
+                        Click="HomeNav_Click"/>
+
+                <Button Content="Minecraft"
+                        Style="{StaticResource NavButtonStyle}"
+                        Click="MinecraftNav_Click"/>
+
+                <Button Content="Installations"
+                        Style="{StaticResource NavButtonStyle}"
+                        Click="InstallationsNav_Click"/>
+
+                <Button Content="Accounts"
+                        Style="{StaticResource NavButtonStyle}"
+                        Click="AccountsNav_Click"/>
+
+                <Button Content="Settings"
+                        Style="{StaticResource NavButtonStyle}"
+                        Click="SettingsNav_Click"/>
+
+            </StackPanel>
+
+
+            <StackPanel Grid.Row="2"
+                        Margin="5,0,0,5">
+
+                <TextBlock Text="VERSION"
+                           FontSize="10"
+                           FontWeight="SemiBold"
+                           Foreground="#5F646D"/>
+
+                <TextBlock Text="MatricsMC 0.1"
+                           FontSize="12"
+                           Foreground="#747982"
+                           Margin="0,5,0,0"/>
+
+            </StackPanel>
+
+        </Grid>
+
+    </Border>
+
+
+    <!-- ========================================================= -->
+    <!-- MAIN CONTENT -->
+    <!-- ========================================================= -->
+
+    <Grid Grid.Column="1">
+
+
+        <!-- ===================================================== -->
+        <!-- HOME -->
+        <!-- ===================================================== -->
+
+        <ScrollViewer x:Name="HomePage"
+                      Panel.ZIndex="0"
+                      VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Disabled">
+
+            <Grid Margin="42,35,42,35">
+
+                <Grid.RowDefinitions>
+
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+
+                </Grid.RowDefinitions>
+
+
+                <StackPanel Grid.Row="0"
+                            Margin="0,0,0,28">
+
+                    <TextBlock Text="Welcome back"
+                               FontSize="31"
+                               FontWeight="Bold"/>
+
+                    <TextBlock Text="Ready to play Minecraft?"
+                               FontSize="14"
+                               Foreground="#777C85"
+                               Margin="0,5,0,0"/>
+
+                </StackPanel>
+
+
+                <!-- HERO -->
+
+                <Border Grid.Row="1"
+                        Background="#15181D"
+                        BorderBrush="#252A31"
+                        BorderThickness="1"
+                        CornerRadius="16"
+                        Padding="28"
+                        Margin="0,0,0,24">
+
+                    <Grid>
+
+                        <Grid.ColumnDefinitions>
+
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel>
+
+                            <TextBlock Text="MatricsMC"
+                                       FontSize="15"
+                                       FontWeight="SemiBold"
+                                       Foreground="#57D66B"/>
+
+                            <TextBlock Text="Your Minecraft."
+                                       FontSize="30"
+                                       FontWeight="Bold"
+                                       Margin="0,7,0,0"/>
+
+                            <TextBlock Text="One simple launcher for your Minecraft installations."
+                                       FontSize="13"
+                                       Foreground="#777C85"
+                                       Margin="0,5,0,0"/>
+
+                        </StackPanel>
+
+                        <Button Grid.Column="1"
+                                Content="PLAY"
+                                Width="130"
+                                Height="48"
+                                VerticalAlignment="Center"
+                                Style="{StaticResource PrimaryButtonStyle}"
+                                Click="PlayButton_Click"/>
+
+                    </Grid>
+
+                </Border>
+
+
+                <!-- ================================================= -->
+                <!-- INSTALLATION -->
+                <!-- ================================================= -->
+
+                <Border Grid.Row="2"
+                        Background="#15181D"
+                        BorderBrush="#252A31"
+                        BorderThickness="1"
+                        CornerRadius="14"
+                        Padding="22"
+                        Margin="0,0,0,24">
+
+                    <StackPanel>
+
+                        <TextBlock Text="Minecraft Installation"
+                                   FontSize="17"
+                                   FontWeight="SemiBold"/>
+
+                        <TextBlock Text="Choose a live Minecraft version, launcher, and Minecraft directory."
+                                   FontSize="12"
+                                   Foreground="#777C85"
+                                   Margin="0,4,0,18"/>
+
+
+                        <Grid>
+
+                            <Grid.ColumnDefinitions>
+
+                                <ColumnDefinition Width="250"/>
+                                <ColumnDefinition Width="250"/>
+                                <ColumnDefinition Width="*"/>
+
+                            </Grid.ColumnDefinitions>
+
+
+                            <!-- VERSION -->
+
+                            <StackPanel>
+
+                                <TextBlock Text="MINECRAFT VERSION"
+                                           FontSize="10"
+                                           FontWeight="SemiBold"
+                                           Foreground="#626771"
+                                           Margin="0,0,0,7"/>
+
+                                <ComboBox x:Name="VersionComboBox"
+                                          Height="42"
+                                          DisplayMemberPath="DisplayName"
+                                          Style="{StaticResource DarkComboBoxStyle}"
+                                          SelectionChanged="VersionComboBox_SelectionChanged"/>
+
+                            </StackPanel>
+
+
+                            <!-- LAUNCHER -->
+
+                            <StackPanel Grid.Column="1"
+                                        Margin="14,0,0,0">
+
+                                <TextBlock Text="LAUNCHER"
+                                           FontSize="10"
+                                           FontWeight="SemiBold"
+                                           Foreground="#626771"
+                                           Margin="0,0,0,7"/>
+
+                                <ComboBox x:Name="LauncherComboBox"
+                                          Height="42"
+                                          DisplayMemberPath="Name"
+                                          Style="{StaticResource DarkComboBoxStyle}"
+                                          SelectionChanged="LauncherComboBox_SelectionChanged"/>
+
+                            </StackPanel>
+
+
+                            <!-- DIRECTORY -->
+
+                            <StackPanel Grid.Column="2"
+                                        Margin="14,0,0,0">
+
+                                <TextBlock Text="MINECRAFT DIRECTORY"
+                                           FontSize="10"
+                                           FontWeight="SemiBold"
+                                           Foreground="#626771"
+                                           Margin="0,0,0,7"/>
+
+                                <Border Height="42"
+                                        Background="#15181D"
+                                        BorderBrush="#292E35"
+                                        BorderThickness="1"
+                                        CornerRadius="9">
+
+                                    <Grid>
+
+                                        <TextBox x:Name="GameDirectoryTextBox"
+                                                 VerticalContentAlignment="Center"
+                                                 Margin="12,0,82,0"/>
+
+                                        <Button Content="Browse"
+                                                Width="70"
+                                                Height="32"
+                                                HorizontalAlignment="Right"
+                                                Margin="0,0,5,0"
+                                                FontSize="12"
+                                                Padding="8,5"
+                                                Style="{StaticResource SecondaryButtonStyle}"
+                                                Click="BrowseDirectory_Click"/>
+
+                                    </Grid>
+
+                                </Border>
+
+                            </StackPanel>
+
+                        </Grid>
+
+
+                        <TextBlock x:Name="VersionStatusText"
+                                   Text="Loading Minecraft versions..."
+                                   FontSize="11"
+                                   Foreground="#777C85"
+                                   Margin="0,12,0,0"/>
+
+                        <ProgressBar x:Name="InstallProgressBar"
+                                     Height="5"
+                                     Margin="0,15,0,7"
+                                     Minimum="0"
+                                     Maximum="100"
+                                     Value="0"/>
+
+                        <TextBlock x:Name="InstallStatusText"
+                                   Text="Ready."
+                                   FontSize="11"
+                                   Foreground="#777C85"/>
+
+                    </StackPanel>
+
+                </Border>
+
+
+                <!-- ================================================= -->
+                <!-- QUICK ACTIONS -->
+                <!-- ================================================= -->
+
+                <StackPanel Grid.Row="3"
+                            Margin="0,0,0,24">
+
+                    <TextBlock Text="Quick Actions"
+                               FontSize="17"
+                               FontWeight="SemiBold"
+                               Margin="0,0,0,12"/>
+
+                    <Grid>
+
+                        <Grid.ColumnDefinitions>
+
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="14"/>
+                            <ColumnDefinition Width="*"/>
+
+                        </Grid.ColumnDefinitions>
+
+
+                        <Button Grid.Column="0"
+                                Height="92"
+                                Style="{StaticResource QuickActionStyle}"
+                                Click="ManageAccounts_Click">
+
+                            <Grid>
+
+                                <Grid.ColumnDefinitions>
+
+                                    <ColumnDefinition Width="52"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+
+                                </Grid.ColumnDefinitions>
+
+                                <Border Width="42"
+                                        Height="42"
+                                        Background="#20252B"
+                                        CornerRadius="10"
+                                        VerticalAlignment="Center">
+
+                                    <TextBlock Text="♙"
+                                               FontSize="24"
+                                               Foreground="#57D66B"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"/>
+
+                                </Border>
+
+                                <StackPanel Grid.Column="1"
+                                            VerticalAlignment="Center"
+                                            Margin="14,0,10,0">
+
+                                    <TextBlock Text="Manage Accounts"
+                                               FontSize="15"
+                                               FontWeight="SemiBold"/>
+
+                                    <TextBlock Text="Microsoft and offline profiles"
+                                               FontSize="11"
+                                               Foreground="#777C85"
+                                               Margin="0,4,0,0"/>
+
+                                </StackPanel>
+
+                                <TextBlock Grid.Column="2"
+                                           Text="›"
+                                           FontSize="24"
+                                           Foreground="#626871"
+                                           VerticalAlignment="Center"/>
+
+                            </Grid>
+
+                        </Button>
+
+
+                        <Button Grid.Column="2"
+                                Height="92"
+                                Style="{StaticResource QuickActionStyle}"
+                                Click="ImportLauncher_Click">
+
+                            <Grid>
+
+                                <Grid.ColumnDefinitions>
+
+                                    <ColumnDefinition Width="52"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+
+                                </Grid.ColumnDefinitions>
+
+                                <Border Width="42"
+                                        Height="42"
+                                        Background="#20252B"
+                                        CornerRadius="10"
+                                        VerticalAlignment="Center">
+
+                                    <TextBlock Text="⇩"
+                                               FontSize="24"
+                                               Foreground="#57D66B"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"/>
+
+                                </Border>
+
+                                <StackPanel Grid.Column="1"
+                                            VerticalAlignment="Center"
+                                            Margin="14,0,10,0">
+
+                                    <TextBlock Text="Import Launcher"
+                                               FontSize="15"
+                                               FontWeight="SemiBold"/>
+
+                                    <TextBlock Text="Import data from other launchers"
+                                               FontSize="11"
+                                               Foreground="#777C85"
+                                               Margin="0,4,0,0"/>
+
+                                </StackPanel>
+
+                                <TextBlock Grid.Column="2"
+                                           Text="›"
+                                           FontSize="24"
+                                           Foreground="#626871"
+                                           VerticalAlignment="Center"/>
+
+                            </Grid>
+
+                        </Button>
+
+                    </Grid>
+
+                </StackPanel>
+
+
+                <!-- ================================================= -->
+                <!-- PROFILE -->
+                <!-- ================================================= -->
+
+                <Border Grid.Row="4"
+                        Background="#15181D"
+                        BorderBrush="#252A31"
+                        BorderThickness="1"
+                        CornerRadius="14"
+                        Padding="20">
+
+                    <Grid>
+
+                        <Grid.ColumnDefinitions>
+
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+
+                        </Grid.ColumnDefinitions>
+
+                        <Border Width="48"
+                                Height="48"
+                                Background="#20252B"
+                                CornerRadius="24">
+
+                            <TextBlock x:Name="ProfileAvatarText"
+                                       Text="P"
+                                       FontSize="18"
+                                       FontWeight="Bold"
+                                       Foreground="#57D66B"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"/>
+
+                        </Border>
+
+                        <StackPanel Grid.Column="1"
+                                    Margin="15,0,0,0"
+                                    VerticalAlignment="Center">
+
+                            <TextBlock Text="Current Profile"
+                                       FontSize="10"
+                                       Foreground="#626771"
+                                       FontWeight="SemiBold"/>
+
+                            <TextBlock x:Name="ProfileNameText"
+                                       Text="No Account Loaded"
+                                       FontSize="15"
+                                       FontWeight="SemiBold"
+                                       Margin="0,3,0,0"/>
+
+                        </StackPanel>
+
+                        <TextBlock x:Name="ProfileTypeText"
+                                   Grid.Column="2"
+                                   Text="None"
+                                   Foreground="#777C85"
+                                   FontSize="12"
+                                   VerticalAlignment="Center"/>
+
+                    </Grid>
+
+                </Border>
+
+            </Grid>
+
+        </ScrollViewer>
+
+
+        <!-- ===================================================== -->
+        <!-- ACCOUNTS -->
+        <!-- ===================================================== -->
+
+        <Grid x:Name="AccountsPage"
+              Panel.ZIndex="10"
+              Visibility="Collapsed"
+              Background="#0D0F12"
+              Margin="42,35,42,35">
+
+            <Grid.RowDefinitions>
+
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+
+            </Grid.RowDefinitions>
+
+
+            <StackPanel Grid.Row="0"
+                        Margin="0,0,0,25">
+
+                <TextBlock Text="Accounts"
+                           FontSize="31"
+                           FontWeight="Bold"/>
+
+                <TextBlock Text="Connect an official Minecraft account or manage development profiles."
+                           FontSize="14"
+                           Foreground="#777C85"
+                           Margin="0,5,0,0"/>
+
+            </StackPanel>
+
+
+            <Grid Grid.Row="1"
+                  Margin="0,0,0,20">
+
+                <Grid.ColumnDefinitions>
+
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="Auto"/>
+
+                </Grid.ColumnDefinitions>
+
+
+                <TextBlock x:Name="AccountStatusText"
+                           Text="No account loaded"
+                           VerticalAlignment="Center"
+                           Foreground="#777C85"
+                           FontSize="12"/>
+
+
+                <Button Grid.Column="1"
+                        Content="Microsoft Login"
+                        Width="145"
+                        Height="44"
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        Click="MicrosoftLogin_Click"/>
+
+
+                <Button Grid.Column="3"
+                        x:Name="AddOfflineAccountButton"
+                        Content="+ Offline Profile"
+                        Width="150"
+                        Height="44"
+                        Style="{StaticResource SecondaryButtonStyle}"
+                        Click="AddOfflineAccount_Click"/>
+
+
+                <Button Grid.Column="5"
+                        Content="Load Account"
+                        Width="140"
+                        Height="44"
+                        Style="{StaticResource SecondaryButtonStyle}"
+                        Click="LoadAccount_Click"/>
+
+            </Grid>
+
+
+            <Border Grid.Row="2"
+                    Background="#101216"
+                    BorderBrush="#252A31"
+                    BorderThickness="1"
+                    CornerRadius="14"
+                    Padding="18">
+
+                <ListBox x:Name="AccountsList"
+                         Background="Transparent"
+                         BorderThickness="0"
+                         SelectionMode="Single"
+                         SelectionChanged="AccountsList_SelectionChanged"
+                         ItemContainerStyle="{StaticResource AccountListItemStyle}">
+
+                    <ListBox.ItemTemplate>
+
+                        <DataTemplate>
+
+                            <Grid>
+
+                                <Grid.ColumnDefinitions>
+
+                                    <ColumnDefinition Width="58"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+
+                                </Grid.ColumnDefinitions>
+
+
+                                <Border Width="48"
+                                        Height="48"
+                                        Background="#20252B"
+                                        CornerRadius="24"
+                                        VerticalAlignment="Center">
+
+                                    <TextBlock Text="{Binding Name}"
+                                               FontSize="17"
+                                               FontWeight="Bold"
+                                               Foreground="#57D66B"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"/>
+
+                                </Border>
+
+
+                                <StackPanel Grid.Column="1"
+                                            VerticalAlignment="Center"
+                                            Margin="15,0,0,0">
+
+                                    <TextBlock Text="{Binding Name}"
+                                               FontSize="16"
+                                               FontWeight="SemiBold"/>
+
+                                    <TextBlock Text="{Binding Type}"
+                                               FontSize="11"
+                                               Foreground="#777C85"
+                                               Margin="0,4,0,0"/>
+
+                                </StackPanel>
+
+
+                                <Border Grid.Column="2"
+                                        Background="#18251B"
+                                        CornerRadius="8"
+                                        Padding="10,6"
+                                        VerticalAlignment="Center">
+
+                                    <TextBlock Text="● LOADED"
+                                               Foreground="#57D66B"
+                                               FontSize="10"
+                                               FontWeight="SemiBold"
+                                               Visibility="{Binding IsLoaded,
+                                                   Converter={StaticResource BooleanToVisibilityConverter}}"/>
+
+                                </Border>
+
+                            </Grid>
+
+                        </DataTemplate>
+
+                    </ListBox.ItemTemplate>
+
+                </ListBox>
+
+            </Border>
+
+
+            <Grid Grid.Row="3"
+                  Margin="0,15,0,0">
+
+                <Grid.ColumnDefinitions>
+
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+
+                </Grid.ColumnDefinitions>
+
+
+                <TextBlock x:Name="OfflineLockText"
+                           Text="🔒 Offline profiles are locked until a legitimate Minecraft account is connected."
+                           Foreground="#777C85"
+                           FontSize="11"
+                           VerticalAlignment="Center"/>
+
+
+                <Button Grid.Column="1"
+                        Content="Remove Account"
+                        Style="{StaticResource SecondaryButtonStyle}"
+                        Click="RemoveAccount_Click"/>
+
+            </Grid>
+
+        </Grid>
+
+    </Grid>
+
+</Grid>
+
+
+</Window>
+

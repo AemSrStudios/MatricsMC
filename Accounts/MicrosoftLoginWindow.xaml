@@ -1,0 +1,122 @@
+﻿<Window x:Class="MatricsMC.MicrosoftLoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Microsoft Account"
+        Width="520"
+        Height="430"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        Background="#0D0F12"
+        Foreground="White"
+        FontFamily="Segoe UI">
+
+    <Grid Margin="32">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0"
+                    Margin="0,0,0,25">
+
+            <TextBlock Text="Microsoft Account"
+                       FontSize="28"
+                       FontWeight="Bold"/>
+
+            <TextBlock Text="Connect your legitimate Minecraft account to MatricsMC."
+                       FontSize="13"
+                       Foreground="#777C85"
+                       Margin="0,6,0,0"/>
+
+        </StackPanel>
+
+        <Border Grid.Row="1"
+                Background="#15181D"
+                BorderBrush="#252A31"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="24">
+
+            <StackPanel>
+
+                <TextBlock Text="Official Microsoft Login"
+                           FontSize="17"
+                           FontWeight="SemiBold"/>
+
+                <TextBlock Text="MatricsMC will use Microsoft's official authentication flow. Your Microsoft password is never entered into MatricsMC."
+                           TextWrapping="Wrap"
+                           FontSize="12"
+                           Foreground="#777C85"
+                           Margin="0,8,0,22"/>
+
+                <Border Background="#101216"
+                        BorderBrush="#252A31"
+                        BorderThickness="1"
+                        CornerRadius="10"
+                        Padding="15">
+
+                    <StackPanel>
+
+                        <TextBlock Text="ACCOUNT STATUS"
+                                   FontSize="10"
+                                   FontWeight="SemiBold"
+                                   Foreground="#626771"/>
+
+                        <TextBlock x:Name="StatusText"
+                                   Text="Ready to connect"
+                                   FontSize="14"
+                                   FontWeight="SemiBold"
+                                   Margin="0,6,0,0"/>
+
+                    </StackPanel>
+
+                </Border>
+
+                <TextBlock x:Name="InfoText"
+                           Text="Microsoft authentication will open in your browser."
+                           TextWrapping="Wrap"
+                           FontSize="11"
+                           Foreground="#626771"
+                           Margin="0,16,0,0"/>
+
+            </StackPanel>
+
+        </Border>
+
+        <Grid Grid.Row="2"
+              Margin="0,20,0,0">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="1"
+                    Content="Cancel"
+                    Width="100"
+                    Height="42"
+                    Background="#181B20"
+                    Foreground="#E6E8EB"
+                    BorderBrush="#292E35"
+                    BorderThickness="1"
+                    Click="Cancel_Click"/>
+
+            <Button Grid.Column="3"
+                    Content="Connect Microsoft"
+                    Width="170"
+                    Height="42"
+                    Background="#57D66B"
+                    Foreground="#08100A"
+                    BorderThickness="0"
+                    FontWeight="SemiBold"
+                    Click="Connect_Click"/>
+
+        </Grid>
+
+    </Grid>
+
+</Window>
