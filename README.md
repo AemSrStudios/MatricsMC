@@ -1,47 +1,120 @@
 # MatricsMC Launcher
-## Disclaimer
 
-MatricsMC is an independent third-party Minecraft launcher project.
-
-MatricsMC is not affiliated with, endorsed by, sponsored by, or officially connected to Microsoft, Mojang Studios, Minecraft, Prism Launcher, MultiMC, ATLauncher, CurseForge, Modrinth, Lunar Client, Badlion Client, or any other third-party launcher or service referenced by this project.
-
-Minecraft is a trademark of Microsoft Corporation and Mojang Studios.
-
-MatricsMC does not distribute Minecraft game files, authentication credentials, or other copyrighted game assets.
 A modern, lightweight Minecraft launcher built with C# and WPF.
 
-MatricsMC is designed to provide a clean and simple way to manage Minecraft installations, accounts, launcher data, settings, and eventually mods/modpacks — all from one launcher.
+MatricsMC is designed to provide a clean, fast, and customizable way to manage Minecraft installations, accounts, launcher data, settings, mods, and modpacks from one application.
 
-## 🚧 Project Status
+> 🚧 **MatricsMC is currently in active development.**
 
-**Early Development / Experimental**
+> ⚠️ **Disclaimer:** MatricsMC is an unofficial, independent third-party Minecraft launcher. It is not affiliated with or endorsed by Microsoft or Mojang. MatricsMC does not distribute Minecraft, pirated game files, cracked accounts, stolen credentials, or authentication bypasses.
 
-MatricsMC is currently under active development. Some features are working, while others are still being built.
+---
 
-Do not expect everything to work yet.
+# 📌 Project Status
 
-## ✨ Planned Features
+MatricsMC is currently an early-development project.
 
-- 🎮 Minecraft version management
-- ▶️ Minecraft launching
-- 👤 Account management
-- 🔐 Microsoft account login
-- 📦 Minecraft installation management
-- 📁 Custom Minecraft directories
-- 💾 Launcher data importing
-- 🔄 Import worlds, mods, resource packs, shaders and configurations
-- 🧩 Mod and modpack support
-- ☕ Java detection and configuration
-- 🧠 RAM allocation
-- ⚙️ Launcher settings
-- 🔄 Launcher auto-updates
-- 📊 Download and installation progress
-- 🖥️ Modern dark UI
-- 🚀 Fast and lightweight launcher
+Some features are implemented, while others are planned or still being developed.
 
-## 📥 Launcher Import
+Development builds may contain bugs, incomplete functionality, experimental features, and breaking changes.
 
-MatricsMC is planned to support importing data from existing Minecraft launchers.
+The project is currently focused on Windows.
+
+---
+
+# ✨ Features
+
+## 🎮 Minecraft
+
+Planned Minecraft management features include:
+
+- Minecraft version selection
+- Minecraft version detection
+- Minecraft version installation
+- Minecraft launching
+- Custom Minecraft directories
+- Multiple installations
+- Installation management
+- Download progress
+- Game launch status
+- Java detection
+- Java configuration
+- RAM allocation
+- JVM configuration
+
+---
+
+# 👤 Account Management
+
+MatricsMC is designed to support multiple Minecraft accounts.
+
+Planned account features:
+
+- Microsoft account login
+- Multiple accounts
+- Account switching
+- Account removal
+- Minecraft profile detection
+- Account status
+- Minecraft username
+- Minecraft UUID
+- Secure authentication
+- Authentication state detection
+
+MatricsMC should never ask users to provide their Microsoft password directly to the launcher.
+
+Microsoft authentication should use Microsoft's supported authentication system.
+
+---
+
+# 🔐 Microsoft Authentication
+
+MatricsMC intends to support legitimate Microsoft/Minecraft authentication.
+
+The authentication system should:
+
+- Use Microsoft's supported authentication flow
+- Authenticate the user through the appropriate Microsoft login process
+- Detect the user's Minecraft profile
+- Obtain the necessary authorization to launch Minecraft
+- Keep authentication information protected
+- Avoid storing passwords
+- Avoid exposing authentication tokens
+
+MatricsMC will never intentionally collect or store a user's Microsoft password.
+
+---
+
+# 📴 Offline Profiles
+
+MatricsMC may provide offline profiles for:
+
+- Launcher development
+- UI testing
+- Local testing
+- Development environments
+- Testing launcher functionality without authentication
+
+Offline profiles are **not equivalent to authenticated Minecraft accounts**.
+
+An offline profile:
+
+- Does not authenticate with Microsoft.
+- Does not prove Minecraft ownership.
+- Does not generate fake Minecraft authentication tokens.
+- Does not bypass Minecraft authentication.
+- Does not bypass Minecraft licensing.
+- Must be clearly identified as an offline profile.
+
+Having a legitimate Minecraft account does not make an unauthenticated/offline session an authenticated Minecraft session.
+
+When launching Minecraft normally, MatricsMC should use the user's legitimate authenticated account.
+
+---
+
+# 📦 Launcher Import
+
+One of the main goals of MatricsMC is making it easy to move from another Minecraft launcher.
 
 Potential supported launchers include:
 
@@ -50,66 +123,235 @@ Potential supported launchers include:
 - MultiMC
 - ATLauncher
 - CurseForge
-- Modrinth
+- Modrinth App
 - Lunar Client
 - Badlion Client
 
-The goal is to make moving to MatricsMC as easy as possible without deleting or modifying the original launcher data.
+MatricsMC may detect these launchers and allow users to import compatible local data.
 
-## 👤 Accounts
+---
 
-The launcher currently has the foundation for account management.
+# 📥 Importable Data
 
-Planned account features include:
+Depending on the launcher and format, MatricsMC may support importing:
 
-- Microsoft account login
-- Multiple accounts
-- Account switching
-- Account removal
-- Minecraft profile detection
-- Secure authentication
+- Worlds
+- Saves
+- Mods
+- Resource packs
+- Shader packs
+- Screenshots
+- Configurations
+- Logs
+- Launcher profiles
+- Instances
+- Modpack data
+- Version data
+- Selected launcher settings
 
-> Offline profiles are intended for development/testing and should not be considered equivalent to a real Microsoft Minecraft account.
+Not every launcher will support every type of data.
 
-## ⚙️ Settings
+Import compatibility will depend on the structure and format used by the source launcher.
 
-MatricsMC will provide settings for things such as:
+---
+
+# 🔄 Import Safety
+
+The launcher import system should:
+
+1. Detect installed launchers.
+2. Display detected launchers.
+3. Allow the user to select what to import.
+4. Show what data will be copied.
+5. Ask for confirmation when necessary.
+6. Copy the selected data into MatricsMC.
+7. Display import progress.
+8. Report files that could not be copied.
+9. Avoid deleting original launcher data.
+
+The original launcher data should remain untouched unless the user explicitly chooses otherwise.
+
+---
+
+# 🔒 Authentication Data
+
+Authentication information must be treated differently from normal Minecraft files.
+
+MatricsMC must never intentionally import, expose, or publish:
+
+- Microsoft passwords
+- Authentication cookies
+- Session cookies
+- Access tokens
+- Refresh tokens
+- Client secrets
+- Private authentication credentials
+
+Authentication credentials must never be committed to GitHub.
+
+---
+
+# ⚙️ Settings
+
+MatricsMC will provide a dedicated settings system.
+
+Planned settings include:
+
+## Minecraft
 
 - Minecraft directory
+- Java executable
+- Java version
 - RAM allocation
-- Java configuration
-- Selected account
-- Launcher preferences
+- JVM arguments
+- Default Minecraft version
+
+## Launcher
+
+- Theme
+- Startup behavior
+- Update settings
 - Download settings
+- Logging
+- Import behavior
 
-## 🛠️ Built With
+## Account
 
-- C#
-- .NET
-- WPF
-- XAML
-- Visual Studio
+- Default account
+- Account switching
+- Account management
 
-## 💻 Requirements
+---
 
-Currently intended for:
+# ☕ Java Management
 
-- Windows 10 / Windows 11
-- .NET 8
-- x64 Windows systems
+MatricsMC is planned to automatically detect compatible Java installations.
 
-Additional requirements may be added as development continues.
+Planned functionality:
 
-## 📂 Project Structure
+- Detect installed Java versions
+- Display Java version
+- Select Java executable
+- Automatically select Java when possible
+- Warn when an incompatible Java version is detected
+- Allow advanced users to specify a custom Java path
+
+---
+
+# 🧩 Mods & Modpacks
+
+Future versions of MatricsMC may support:
+
+- Mods
+- Mod loaders
+- Modpacks
+- Fabric
+- Forge
+- NeoForge
+- Quilt
+- Modrinth modpacks
+- CurseForge modpacks
+
+Possible future functionality:
+
+- Install mods
+- Remove mods
+- Enable/disable mods
+- Update mods
+- Install modpacks
+- Update modpacks
+- Manage modpack instances
+
+---
+
+# 🖥️ User Interface
+
+MatricsMC uses a modern dark interface built with WPF.
+
+Design goals:
+
+- Clean
+- Minimal
+- Modern
+- Fast
+- Easy to understand
+- Dark theme
+- Clear navigation
+- Subtle rounded elements
+- Useful icons
+- Responsive layouts
+- Avoid unnecessary clutter
+
+The launcher should feel like a modern desktop application rather than a collection of unrelated buttons.
+
+---
+
+# 🧭 Navigation
+
+The launcher uses a sidebar-based navigation system.
+
+Main sections include:
+
+- 🏠 Home
+- 🎮 Minecraft
+- 📦 Installations
+- 👤 Accounts
+- ⚙️ Settings
+
+Additional sections may be added as development continues.
+
+---
+
+# 🔄 Automatic Updates
+
+MatricsMC is planned to eventually include an automatic update system.
+
+Potential functionality:
+
+- Check for new MatricsMC versions
+- Display available updates
+- Download updates
+- Verify downloaded files
+- Install updates
+- Restart the launcher after updating
+
+Updates should only be downloaded from trusted MatricsMC release sources.
+
+---
+
+# 🔒 Security
+
+Security is an important part of MatricsMC.
+
+MatricsMC should never intentionally:
+
+- Steal credentials
+- Collect Microsoft passwords
+- Steal authentication tokens
+- Capture session cookies
+- Install malware
+- Download malicious software
+- Hide malicious processes
+- Bypass security protections
+- Modify unrelated user files without permission
+
+Sensitive credentials must never be hard-coded into the application or repository.
+
+---
+
+# 🔑 GitHub Secrets
+
+Developers must never commit secrets to the repository.
+
+Do not commit:
 
 ```text
-MatricsMC/
-├── App.xaml
-├── App.xaml.cs
-├── MainWindow.xaml
-├── MainWindow.xaml.cs
-├── LauncherImportWindow.xaml
-├── LauncherImportWindow.xaml.cs
-├── AddAccountWindow.xaml
-├── AddAccountWindow.xaml.cs
-└── MatricsMC.csproj
+passwords
+API keys
+OAuth secrets
+client secrets
+access tokens
+refresh tokens
+session tokens
+private keys
+authentication cookies
