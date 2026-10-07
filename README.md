@@ -1,5 +1,13 @@
 # MatricsMC Launcher
+## Disclaimer
 
+MatricsMC is an independent third-party Minecraft launcher project.
+
+MatricsMC is not affiliated with, endorsed by, sponsored by, or officially connected to Microsoft, Mojang Studios, Minecraft, Prism Launcher, MultiMC, ATLauncher, CurseForge, Modrinth, Lunar Client, Badlion Client, or any other third-party launcher or service referenced by this project.
+
+Minecraft is a trademark of Microsoft Corporation and Mojang Studios.
+
+MatricsMC does not distribute Minecraft game files, authentication credentials, or other copyrighted game assets.
 A modern, lightweight Minecraft launcher built with C# and WPF.
 
 MatricsMC is designed to provide a clean and simple way to manage Minecraft installations, accounts, launcher data, settings, and eventually mods/modpacks — all from one launcher.
