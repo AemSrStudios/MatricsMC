@@ -346,12 +346,12 @@ Developers must never commit secrets to the repository.
 Do not commit:
 
 ```text
-passwords
-API keys
-OAuth secrets
-client secrets
-access tokens
-refresh tokens
-session tokens
-private keys
-authentication cookies
+Passwords
+API Keys
+OAuth Secrets
+Client Secrets
+Access Tokens
+Refresh Tokens
+Session Tokens
+Private Keys
+Authentication Cookies
